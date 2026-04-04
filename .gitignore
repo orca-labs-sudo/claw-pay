@@ -3,6 +3,9 @@ facilitator/.env
 facilitator/wallet.seed
 *.seed
 
+# Docs — nicht öffentlich
+*.md
+
 # Python
 __pycache__/
 *.pyc
