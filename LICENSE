@@ -1,0 +1,41 @@
+Business Source License 1.1
+
+Parameters
+
+Licensor: Vadim Kalchenko
+Licensed Work: claw-pay
+Change Date: 2029-01-01
+Change License: MIT License
+
+Terms
+
+The Licensor hereby grants you the right to copy, modify, create derivative
+works, redistribute, and make non-production use of the Licensed Work.
+
+The Licensor may make an Additional Use Grant, above, permitting limited
+production use.
+
+Effective on the Change Date, or the fourth anniversary of the first publicly
+available distribution of a specific version of the Licensed Work under this
+License, whichever comes first, the Licensor hereby grants you rights under
+the terms of the Change License, and the rights granted in the paragraph
+above terminate.
+
+Additional Use Grant
+
+You may use the Licensed Work in production, provided that you do not use it
+to operate a payment facilitator service that collects transaction fees from
+third parties.
+
+Commercial use — defined as operating a payment processing or facilitation
+service that routes cryptocurrency payments and retains a fee — requires a
+separate commercial license from the Licensor.
+
+For licensing inquiries: https://github.com/vadymkalchenko-sudo/claw-pay
+
+Notice
+
+Business Source License 1.1 is not an Open Source license. The source code
+is made available for transparency and non-commercial use only.
+
+On 2029-01-01 this software will be made available under the MIT License.

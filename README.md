@@ -199,4 +199,7 @@ skill/                          OpenClaw skill (Phase 2)
 
 ## License
 
-MIT
+Business Source License 1.1 — see [LICENSE](LICENSE)
+
+Commercial use (operating a payment facilitator that collects transaction fees) requires a separate license.
+Free to use for non-commercial and personal projects. Converts to MIT on 2029-01-01.
