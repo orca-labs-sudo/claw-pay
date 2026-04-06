@@ -18,6 +18,7 @@ from src.routes.verify import verify
 from src.models.payment import VerifyRequest
 from src.services.nonce_store import mark_nonce_used
 from src.services.cdp import settle_payment
+from src.services.transaction_log import log_settlement
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -61,7 +62,8 @@ async def settle(req: SettleRequest) -> SettleResponse:
         )
     except Exception as e:
         logger.exception("Settlement fehlgeschlagen für payer=%s", auth.from_)
-        # Nonce bleibt gesperrt — bei echtem Fehler manuell prüfen
+        log_settlement(success=False, payer=auth.from_, seller=req.sellerAddress,
+                       network=req.payment.network, error=str(e))
         return SettleResponse(
             success=False,
             error=f"On-Chain Settlement fehlgeschlagen: {e}",
@@ -73,6 +75,18 @@ async def settle(req: SettleRequest) -> SettleResponse:
         req.sellerAddress,
         result.gross_amount,
         result.fee_amount,
+    )
+
+    log_settlement(
+        success=True,
+        payer=auth.from_,
+        seller=req.sellerAddress,
+        gross=str(result.gross_amount),
+        seller_amt=str(result.seller_amount),
+        fee=str(result.fee_amount),
+        network=req.payment.network,
+        intake_tx=result.intake_tx_hash,
+        transfer_tx=result.transfer_tx_hash,
     )
 
     return SettleResponse(

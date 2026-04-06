@@ -8,6 +8,8 @@ from fastapi.responses import JSONResponse
 load_dotenv()
 
 from src.routes import verify, settle  # noqa: E402 — nach load_dotenv
+from src.routes import admin  # noqa: E402
+from src.services.transaction_log import init_db  # noqa: E402
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    init_db()
     logger.info("x402 Facilitator gestartet")
     yield
     logger.info("x402 Facilitator beendet")
@@ -32,6 +35,7 @@ app = FastAPI(
 
 app.include_router(verify.router)
 app.include_router(settle.router)
+app.include_router(admin.router)
 
 
 @app.exception_handler(Exception)
