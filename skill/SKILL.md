@@ -112,6 +112,17 @@ console.log(`Balance: ${formatted} ${symbol}`);
 
 ---
 
+## Important — legal notice
+
+**claw-pay is a software library. It is not a financial service, wallet provider, or payment operator.**
+
+- Your private key never leaves your device.
+- We never hold, touch, or control your funds at any time.
+- Direct transfers (below) go straight on-chain — we are not involved in any way.
+- You are solely responsible for your transactions and applicable laws in your jurisdiction.
+
+---
+
 ## Direct transfers (Wallet-to-Wallet)
 
 Send USDC directly to any address — no service, no facilitator, no fee.

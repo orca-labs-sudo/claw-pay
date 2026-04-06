@@ -197,6 +197,17 @@ skill/                          OpenClaw skill (Phase 2)
 
 ---
 
+## Disclaimer
+
+**claw-pay is a software library and technical relay — not a financial service.**
+
+- The **wallet skill** runs entirely on your device using your own private keys. We never hold, touch, or have access to your funds at any time.
+- The **facilitator** is a technical settlement relay for API-access payments. It does not offer money transmission, custody, or financial services.
+- All blockchain transactions are initiated and signed exclusively by the end user.
+- Users are solely responsible for compliance with applicable laws in their jurisdiction.
+
+---
+
 ## License
 
 Business Source License 1.1 — see [LICENSE](LICENSE)

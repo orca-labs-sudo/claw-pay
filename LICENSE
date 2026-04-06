@@ -31,7 +31,26 @@ Commercial use — defined as operating a payment processing or facilitation
 service that routes cryptocurrency payments and retains a fee — requires a
 separate commercial license from the Licensor.
 
-For licensing inquiries: https://github.com/vadymkalchenko-sudo/claw-pay
+For licensing inquiries: https://github.com/orca-labs-sudo/claw-pay
+
+Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. THE LICENSOR IS NOT A PAYMENT SERVICE PROVIDER, MONEY TRANSMITTER,
+OR FINANCIAL INSTITUTION.
+
+The wallet skill (skill/) is a software library only. It runs entirely on the
+user's device using the user's own private keys. The Licensor never holds,
+controls, transmits, or has access to any user funds at any time. All
+blockchain transactions are initiated and signed exclusively by the end user.
+
+The facilitator (facilitator/) acts as a technical settlement relay for
+API-access payments only. Brief custody of funds during the settlement process
+does not constitute a money transmission service under the intended use of this
+software.
+
+Users are solely responsible for compliance with applicable laws in their
+jurisdiction regarding cryptocurrency use and transfers.
 
 Notice
 
