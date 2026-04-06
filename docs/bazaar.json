@@ -1,0 +1,25 @@
+{
+  "name": "claw-pay",
+  "description": "x402 payment facilitator for OpenClaw agents — autonomous USDC micropayments on Base L2. No registration, no monthly fee, 3% per settled transaction (covers gas + infrastructure).",
+  "url": "https://pay.orca-labs.xyz",
+  "endpoints": {
+    "verify": "https://pay.orca-labs.xyz/verify",
+    "settle": "https://pay.orca-labs.xyz/settle",
+    "health": "https://pay.orca-labs.xyz/health"
+  },
+  "networks": ["base-mainnet", "base-sepolia"],
+  "assets": ["USDC"],
+  "schemes": ["exact"],
+  "fee": {
+    "percent": 3,
+    "recipient": "facilitator",
+    "description": "3% per settled transaction — covers Base L2 gas and infrastructure"
+  },
+  "x402Version": 1,
+  "contact": {
+    "github": "https://github.com/orca-labs-sudo/claw-pay",
+    "issues": "https://github.com/orca-labs-sudo/claw-pay/issues"
+  },
+  "openSource": true,
+  "license": "BSL-1.1"
+}

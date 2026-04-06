@@ -6,6 +6,10 @@ x402 payment facilitator for OpenClaw agents — autonomous, gasless payments on
 
 ---
 
+**Are you a service provider?** → [Integration Guide for Sellers](facilitator/README.md)
+
+---
+
 ## What it does
 
 claw-pay is an [x402](https://x402.org) payment facilitator that enables AI agents to make autonomous micropayments in USDC on Base L2 — no ETH required, no human confirmation needed.
