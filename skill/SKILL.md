@@ -112,6 +112,28 @@ console.log(`Balance: ${formatted} ${symbol}`);
 
 ---
 
+## Direct transfers (Wallet-to-Wallet)
+
+Send USDC directly to any address — no service, no facilitator, no fee.
+
+```javascript
+const { loadWallet, transfer } = require('./src/wallet');
+const { ethers } = require('ethers');
+const { NETWORKS } = require('./src/pay');
+
+const net = NETWORKS['base-mainnet'];
+const provider = new ethers.JsonRpcProvider(net.rpcUrl);
+const wallet = await loadWallet(process.env.CLAW_PAY_WALLET_PASSWORD);
+
+const result = await transfer(wallet, '0xKumpel...', '20', net.usdcAddress, provider);
+console.log(`Sent ${result.amount} → ${result.to}`);
+console.log(`TX: https://basescan.org/tx/${result.txHash}`);
+```
+
+Gas: ~$0.0003. Abgeschlossen in ~2 Sekunden. Kein Konto, keine Registrierung.
+
+---
+
 ## Troubleshooting
 
 | Error | Cause | Fix |

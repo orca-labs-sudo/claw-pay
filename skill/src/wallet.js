@@ -164,12 +164,50 @@ function expiryTimestamp(secondsFromNow = 300) {
   return BigInt(Math.floor(Date.now() / 1000) + secondsFromNow);
 }
 
+// ── Direct transfer ───────────────────────────────────────────────────────────
+
+/**
+ * Send ERC-20 tokens directly to any address.
+ * No facilitator, no x402 — plain on-chain transfer.
+ *
+ * @param {ethers.Wallet}   wallet        Loaded (decrypted) wallet
+ * @param {string}          to            Recipient address or ENS name
+ * @param {string|number}   amount        Human-readable amount (e.g. "20" for 20 USDC)
+ * @param {string}          tokenAddress  ERC-20 contract address
+ * @param {ethers.Provider} provider
+ * @returns {Promise<{txHash: string, amount: string, to: string}>}
+ */
+async function transfer(wallet, to, amount, tokenAddress, provider) {
+  const abi = [
+    'function transfer(address to, uint256 amount) returns (bool)',
+    'function decimals() view returns (uint8)',
+    'function symbol() view returns (string)',
+  ];
+
+  const connectedWallet = wallet.connect(provider);
+  const token = new ethers.Contract(tokenAddress, abi, connectedWallet);
+
+  const decimals = await token.decimals();
+  const symbol = await token.symbol();
+  const units = ethers.parseUnits(String(amount), decimals);
+
+  const tx = await token.transfer(to, units);
+  await tx.wait();
+
+  return {
+    txHash: tx.hash,
+    amount: `${amount} ${symbol}`,
+    to,
+  };
+}
+
 module.exports = {
   createWallet,
   loadWallet,
   getStoredAddress,
   signTransferWithAuthorization,
   getTokenBalance,
+  transfer,
   randomNonce,
   expiryTimestamp,
 };
