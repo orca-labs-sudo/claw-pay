@@ -6,6 +6,7 @@ facilitator/wallet.seed
 # Docs — nicht öffentlich
 *.md
 !README.md
+!skill/SKILL.md
 
 # Python
 __pycache__/
