@@ -1,3 +1,10 @@
+---
+name: claw-pay
+description: Autonomous x402 USDC payments on Base L2 — pay for AI services automatically within your configured spending limit. Powered by claw-pay facilitator.
+version: 0.2.1
+tags: [x402, payments, usdc, base, web3, autonomous]
+---
+
 # claw-pay — x402 Payment Skill
 
 You have payment capabilities for x402-gated services. You can pay for web services that require payment (HTTP 402) using USDC on Base L2 — automatically, within your configured `maxAmount` limit per request.
