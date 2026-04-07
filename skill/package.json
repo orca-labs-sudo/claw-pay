@@ -13,5 +13,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/orca-labs-sudo/claw-pay.git"
+  },
+  "openclaw": {
+    "compat": {
+      "pluginApi": "1.0"
+    },
+    "build": {
+      "openclawVersion": "1.0.0"
+    }
   }
 }

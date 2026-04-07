@@ -1,0 +1,14 @@
+{
+  "id": "claw-pay",
+  "name": "claw-pay",
+  "description": "Autonomous x402 payments for OpenClaw agents — pay for AI services with USDC on Base L2",
+  "entry": "src/pay.js",
+  "exports": {
+    "payAndFetch": "src/pay.js",
+    "createWallet": "src/wallet.js",
+    "loadWallet": "src/wallet.js",
+    "getStoredAddress": "src/wallet.js",
+    "getTokenBalance": "src/wallet.js",
+    "transfer": "src/wallet.js"
+  }
+}
