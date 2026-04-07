@@ -83,6 +83,12 @@ def get_stats():
         }
 
 
+def clear_all():
+    with _conn() as conn:
+        conn.execute("DELETE FROM transactions")
+        conn.commit()
+
+
 def get_recent(limit=50):
     with _conn() as conn:
         rows = conn.execute(
