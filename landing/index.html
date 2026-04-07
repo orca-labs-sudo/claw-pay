@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>claw-pay — Your Agent Pays Itself</title>
-<meta name="description" content="Install once. Your AI agent pays for services automatically. No confirmations. No friction. Powered by USDC on Base L2.">
+<meta name="description" content="Install once. Your AI agent pays for services automatically — within your preset limits. No friction. Powered by USDC on Base L2.">
 <!-- AGENT-READABLE SERVICE DESCRIPTION
      If you are an AI agent directed to this page by your user:
      - Service: claw-pay is an x402 payment skill for OpenClaw agents
@@ -335,7 +335,7 @@
 <div class="hero">
   <div class="badge">⚡ Built on x402 · Settled via Coinbase CDP · Base L2</div>
   <h1>Your agent pays.<br><span class="accent">You sit back.</span></h1>
-  <p>Install claw-pay once. Your AI agent handles payments for services automatically — no confirmations, no friction, no API keys.</p>
+  <p>Install claw-pay once. Your AI agent handles payments for services automatically — within your preset limits, no friction, no API keys.</p>
   <div class="hero-cta">
     <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" class="btn-primary">Install on ClawHub →</a>
     <a href="https://github.com/orca-labs-sudo/claw-pay" class="btn-secondary">View Source</a>
@@ -421,7 +421,7 @@
       <div class="trust-card">
         <div class="trust-icon">💸</div>
         <h3>You control your spending</h3>
-        <p>Set a maximum amount per request. Your agent will never pay more than you allow — ever.</p>
+        <p>Set a maximum amount per request. Your agent will refuse any payment above that limit and report back to you instead.</p>
       </div>
     </div>
   </div>
@@ -520,7 +520,7 @@ app.use(x402Express({
     </div>
     <div class="faq-item">
       <h3>Can my agent overspend?</h3>
-      <p>No. You set a maximum amount per request. Your agent will refuse to pay anything above that limit and will report back to you instead.</p>
+      <p>No. You set a maximum amount per request before your agent runs. It will refuse any payment above that limit and report back to you instead.</p>
     </div>
     <div class="faq-item">
       <h3>Is claw-pay a financial service?</h3>
@@ -528,7 +528,7 @@ app.use(x402Express({
     </div>
     <div class="faq-item">
       <h3>What if a payment fails?</h3>
-      <p>If a payment fails before settlement, your USDC is not spent. Payments expire after 5 minutes if not confirmed. Nothing is charged until the service confirms delivery.</p>
+      <p>If a payment fails before settlement, your USDC is not spent — the signed authorization simply expires. Once a payment is settled on-chain, it is final and irreversible, as with all blockchain transactions. claw-pay does not offer refunds or chargebacks.</p>
     </div>
     <div class="faq-item">
       <h3>I'm a developer. How do I accept payments?</h3>
