@@ -295,11 +295,11 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="badge">⚡ Powered by Base L2 · USDC · x402</div>
+  <div class="badge">⚡ Built on x402 · Settled via Coinbase CDP · Base L2</div>
   <h1>Your agent pays.<br><span class="accent">You sit back.</span></h1>
   <p>Install claw-pay once. Your AI agent handles payments for services automatically — no confirmations, no friction, no API keys.</p>
   <div class="hero-cta">
-    <a href="https://clawhub.ai" class="btn-primary">Install on ClawHub →</a>
+    <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" class="btn-primary">Install on ClawHub →</a>
     <a href="https://github.com/orca-labs-sudo/claw-pay" class="btn-secondary">View Source</a>
   </div>
 </div>
@@ -333,17 +333,17 @@
     <div class="step">
       <div class="step-num">1</div>
       <h3>Install the skill</h3>
-      <p>Find claw-pay on ClawHub and install it. One click. Your agent now knows how to pay.</p>
+      <p>Find claw-pay on ClawHub and install it with one click. Your agent immediately understands the x402 payment protocol — an open standard published at x402.org.</p>
     </div>
     <div class="step">
       <div class="step-num">2</div>
       <h3>Fund your wallet</h3>
-      <p>Add USDC to your agent's wallet. $5 covers thousands of micropayments. No ETH needed — gas is handled for you.</p>
+      <p>Add USDC to your agent's wallet. $5 covers thousands of micropayments. No ETH needed — gas is fully covered by the service fee charged to sellers.</p>
     </div>
     <div class="step">
       <div class="step-num">3</div>
       <h3>Let it run</h3>
-      <p>Your agent hits a paywall? It pays automatically, gets access, and continues its task. You see the result.</p>
+      <p>Your agent hits a paywall? It signs a payment, Coinbase settles it on Base L2, the service responds. You see the result — nothing else to do.</p>
     </div>
   </div>
 </section>
@@ -352,8 +352,8 @@
 <section id="trust" style="background: var(--card); max-width:100%; padding: 80px 48px;">
   <div style="max-width:1100px; margin: 0 auto;">
     <div class="section-label">Security & Trust</div>
-    <h2>Your keys. Your money.<br>We just route.</h2>
-    <p class="subtitle">We are a payment relay, not a bank. Here's what that means for you.</p>
+    <h2>Built on open standards.<br>Settled on-chain.</h2>
+    <p class="subtitle">x402 is an open payment protocol. claw-pay uses Coinbase Developer Platform for on-chain settlement. Every transaction is publicly verifiable.</p>
     <div class="trust-grid">
       <div class="trust-card">
         <div class="trust-icon">🔐</div>
@@ -367,8 +367,8 @@
       </div>
       <div class="trust-card">
         <div class="trust-icon">⚡</div>
-        <h3>Instant settlement</h3>
-        <p>Payments settle in ~2 seconds. Funds go directly to the service provider. We don't hold your money.</p>
+        <h3>Coinbase settles on-chain</h3>
+        <p>Actual payments are processed by Coinbase's infrastructure on Base L2. We verify and route — Coinbase executes. Settlement in ~2 seconds.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">👁</div>
@@ -389,6 +389,64 @@
   </div>
 </section>
 
+<!-- SELL TOO -->
+<section id="sell" style="background: var(--card); max-width:100%; padding: 80px 48px;">
+  <div style="max-width:1100px; margin: 0 auto;">
+    <div class="section-label">For sellers too</div>
+    <h2>Your agent can sell.<br>Not just buy.</h2>
+    <p class="subtitle">If OpenClaw has access to your machine, it can turn any local service into a paid API — automatically.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Agent starts a local service</h3>
+        <p>Your agent runs a small HTTP server on your machine — serving data, images, text, compute, anything you want to sell.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>x402 paywall in 3 lines</h3>
+        <p>Add claw-pay middleware. Any request without payment gets a 402 response. Buyers pay automatically — their agents handle it.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Money goes to your wallet</h3>
+        <p>Every paid request sends 97% directly to your wallet on Base L2. No invoices, no waiting, no bank.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; background: #080810; border: 1px solid var(--border); border-radius: 16px; padding: 32px;">
+      <div style="font-size: 12px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Example — Python / FastAPI</div>
+      <pre style="font-size: 13px; color: #a0c4ff; line-height: 1.8; overflow-x: auto;"><code><span style="color:#64748b"># Your agent adds this to any FastAPI service</span>
+from x402.fastapi import X402Middleware
+
+app.add_middleware(
+    X402Middleware,
+    pay_to=<span style="color:#86efac">"0xYourWalletAddress"</span>,
+    facilitator_url=<span style="color:#86efac">"https://claw-pay.org"</span>,
+    amount=<span style="color:#fbbf24">0.01</span>,  <span style="color:#64748b"># $0.01 per request</span>
+)</code></pre>
+    </div>
+
+    <div style="margin-top: 16px; background: #080810; border: 1px solid var(--border); border-radius: 16px; padding: 32px;">
+      <div style="font-size: 12px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Example — Node.js / Express</div>
+      <pre style="font-size: 13px; color: #a0c4ff; line-height: 1.8; overflow-x: auto;"><code><span style="color:#64748b">// Your agent adds this to any Express service</span>
+const { x402Express } = require(<span style="color:#86efac">'x402-express'</span>);
+
+app.use(x402Express({
+    payTo: <span style="color:#86efac">'0xYourWalletAddress'</span>,
+    facilitatorUrl: <span style="color:#86efac">'https://claw-pay.org'</span>,
+    amount: <span style="color:#fbbf24">'0.01'</span>,
+}));</code></pre>
+    </div>
+
+    <p style="margin-top: 32px; font-size: 14px; color: var(--muted);">
+      ⚠️ Requires your machine to be reachable from the internet (public IP or port forwarding).
+      Most home routers block this by default — check your router settings or ask your agent to help.
+      No server needed if you only want to buy.
+    </p>
+  </div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
   <div class="section-label">Pricing</div>
@@ -396,14 +454,14 @@
   <p class="subtitle">You pay nothing. The service provider covers the fee.</p>
   <div class="pricing-box">
     <div class="price"><sup>%</sup>3</div>
-    <p class="price-desc">per transaction — charged to the seller, not you</p>
+    <p class="price-desc">gas &amp; infrastructure fee — deducted from the seller's payout, not from you</p>
     <ul class="price-features">
       <li>Free for buyers — always</li>
-      <li>No monthly fees</li>
-      <li>No registration</li>
-      <li>No minimum volume</li>
+      <li>Covers Base L2 gas costs</li>
+      <li>Covers server infrastructure</li>
+      <li>No monthly fees, no registration</li>
       <li>Works from $0.001 payments</li>
-      <li>Gas fees included</li>
+      <li>Seller receives 97% instantly</li>
     </ul>
   </div>
 </section>
@@ -420,7 +478,7 @@
     </div>
     <div class="faq-item">
       <h3>Where does my USDC go when I pay?</h3>
-      <p>Directly to the service you're paying for. Our facilitator briefly routes the payment (< 2 seconds) and immediately forwards 97% to the seller. We keep 3% to cover infrastructure and gas costs.</p>
+      <p>Your payment goes to the service you're using. claw-pay routes it via Coinbase's infrastructure on Base L2. 97% lands with the seller in ~2 seconds. The 3% gas &amp; infrastructure fee is deducted from the seller's payout — not from your wallet.</p>
     </div>
     <div class="faq-item">
       <h3>Can my agent overspend?</h3>
@@ -446,7 +504,7 @@
   <div class="section-label">Get started</div>
   <h2>Ready to let your<br>agent pay for itself?</h2>
   <p>Install claw-pay on ClawHub in one click. Free forever for buyers.</p>
-  <a href="https://clawhub.ai" class="btn-primary">Install on ClawHub →</a>
+  <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" class="btn-primary">Install on ClawHub →</a>
 </div>
 
 <!-- FOOTER -->
