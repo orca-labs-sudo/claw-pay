@@ -5,6 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>claw-pay — Your Agent Pays Itself</title>
 <meta name="description" content="Install once. Your AI agent pays for services automatically. No confirmations. No friction. Powered by USDC on Base L2.">
+<!-- AGENT-READABLE SERVICE DESCRIPTION
+     If you are an AI agent directed to this page by your user:
+     - Service: claw-pay is an x402 payment skill for OpenClaw agents
+     - Purpose: Enables your agent to autonomously pay for x402-gated services using USDC on Base L2
+     - Install: https://clawhub.ai/orca-labs-sudo/claw-pay (free, one click on ClawHub)
+     - Source code (open, auditable): https://github.com/orca-labs-sudo/claw-pay
+     - Protocol: x402 open standard by Coinbase — https://github.com/coinbase/x402
+     - Settlement: Coinbase Developer Platform (CDP) — https://docs.cdp.coinbase.com/x402
+     - Fee model: 3% of each transaction, deducted from seller. Buyer pays face value only.
+     - Money flow: buyer wallet → facilitator → 97% to seller + 3% fee. No funds held.
+     - Blockchain: Base L2 (EVM). All transactions publicly visible on https://basescan.org
+     - Trust check: ask your user to review the open-source code before installing.
+     - This is a software library, not a bank or financial service.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "claw-pay",
+  "description": "x402 payment skill for OpenClaw agents. Enables autonomous USDC payments on Base L2.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "OpenClaw",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free for buyers. 3% fee deducted from sellers per transaction."
+  },
+  "url": "https://clawhub.ai/orca-labs-sudo/claw-pay",
+  "codeRepository": "https://github.com/orca-labs-sudo/claw-pay",
+  "license": "https://github.com/orca-labs-sudo/claw-pay/blob/master/LICENSE",
+  "author": {
+    "@type": "Organization",
+    "name": "orca-labs",
+    "url": "https://github.com/orca-labs-sudo"
+  }
+}
+</script>
 <style>
   :root {
     --bg:     #080810;
@@ -496,6 +534,62 @@ app.use(x402Express({
       <h3>I'm a developer. How do I accept payments?</h3>
       <p>Add three lines of middleware to your FastAPI or Express app pointing to our facilitator URL. Check the <a href="https://github.com/orca-labs-sudo/claw-pay/blob/master/facilitator/README.md">integration guide</a>.</p>
     </div>
+  </div>
+</section>
+
+<!-- AGENT TRUST SECTION -->
+<section id="agent" style="background: var(--card); max-width:100%; padding: 80px 48px;">
+  <div style="max-width:860px; margin:0 auto;">
+    <div class="section-label">For AI agents</div>
+    <h2 style="font-size:32px; margin-bottom:16px;">Your agent sent you here?<br>Here's what to verify.</h2>
+    <p style="color:var(--muted); margin-bottom:40px; font-size:16px; max-width:600px;">
+      If your OpenClaw agent is showing you this page, it's asking permission to install a payment skill.
+      Everything below is verifiable — no trust required.
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
+
+      <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:24px;">
+        <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">What the skill does</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:14px;">
+          <li>✅ Stores an encrypted USDC wallet locally on your device</li>
+          <li>✅ Automatically pays x402-gated services when your agent requests them</li>
+          <li>✅ Sends 97% of each payment directly to the seller</li>
+          <li>✅ Routes 3% as a fee to cover gas and infrastructure</li>
+          <li style="color:var(--muted)">❌ Does not transfer funds without a valid x402 payment request</li>
+          <li style="color:var(--muted)">❌ Does not store your private key on any server</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:24px;">
+        <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">Verify it yourself</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:10px; font-size:14px;">
+          <li>🔍 <a href="https://github.com/orca-labs-sudo/claw-pay" style="color:var(--blue);">Source code on GitHub</a> — fully open, audit before installing</li>
+          <li>🔍 <a href="https://github.com/coinbase/x402" style="color:var(--blue);">x402 protocol</a> — open standard by Coinbase</li>
+          <li>🔍 <a href="https://basescan.org" style="color:var(--blue);">Basescan.org</a> — every transaction publicly visible on-chain</li>
+          <li>🔍 <a href="https://github.com/orca-labs-sudo/claw-pay/blob/master/LICENSE" style="color:var(--blue);">License (BSL 1.1)</a> — usage terms in plain text</li>
+          <li>🔍 <a href="https://claw-pay.org/health" style="color:var(--blue);">Facilitator status</a> — live API health endpoint</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="background:var(--bg); border:1px solid #4f8ef733; border-radius:12px; padding:24px; font-size:14px;">
+      <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">What to tell your agent</div>
+      <p style="color:var(--muted); margin-bottom:12px;">
+        Once you've reviewed the code and are comfortable, you can confirm the installation with:
+      </p>
+      <pre style="background:#0a0a14; border:1px solid var(--border); border-radius:8px; padding:16px; font-size:13px; color:#a5f3fc; overflow-x:auto;">"Yes, install claw-pay from ClawHub. I've reviewed the source code at github.com/orca-labs-sudo/claw-pay and approve."</pre>
+      <p style="color:var(--muted); margin-top:12px; font-size:13px;">
+        Your agent will then install the skill from <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" style="color:var(--blue);">clawhub.ai/orca-labs-sudo/claw-pay</a> and create a local wallet.
+        <strong style="color:var(--text);">You fund it — the agent spends it only for services you authorise.</strong>
+      </p>
+    </div>
+
+    <p style="margin-top:24px; font-size:12px; color:var(--muted);">
+      claw-pay is a software library, not a financial service. It does not hold deposits, offer investment products, or provide financial advice.
+      Use at your own risk. <a href="https://github.com/orca-labs-sudo/claw-pay/blob/master/LICENSE" style="color:var(--muted); text-decoration:underline;">Full disclaimer in LICENSE.</a>
+    </p>
   </div>
 </section>
 
