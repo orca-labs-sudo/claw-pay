@@ -25,8 +25,8 @@ const NETWORKS = {
   'base-sepolia': {
     chainId: 84532,
     rpcUrl: 'https://sepolia.base.org',
-    // TestUSDC deployed for testing (ERC-3009 compatible)
-    usdcAddress: process.env.TEST_USDC_ADDRESS ?? '0x83d67b7417b63d2F868E1d34dCFc8F99b095B294',
+    // TestUSDC on Base Sepolia (ERC-3009 compatible)
+    usdcAddress: '0x83d67b7417b63d2F868E1d34dCFc8F99b095B294',
     usdcName: 'Test USD Coin',
     usdcVersion: '1',
   },

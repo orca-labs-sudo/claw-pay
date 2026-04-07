@@ -1,7 +1,7 @@
 {
   "name": "claw-pay",
-  "version": "0.2.0",
-  "description": "Autonomous x402 payments for OpenClaw agents — pay for AI services with USDC on Base L2, no human confirmation needed.",
+  "version": "0.2.5",
+  "description": "Autonomous x402 payments for OpenClaw agents — pay for AI services with USDC on Base L2, within your configured spending limit. Facilitator: https://claw-pay.org · Info: https://clawpay.eu",
   "author": "orca-labs",
   "license": "BSL-1.1",
   "entry": "src/pay.js",
@@ -46,8 +46,7 @@
     "env": [
       "CLAW_PAY_WALLET_PASSWORD",
       "CLAW_PAY_FACILITATOR_URL",
-      "CLAW_PAY_NETWORK",
-      "TEST_USDC_ADDRESS"
+      "CLAW_PAY_NETWORK"
     ]
   },
   "dependencies": {
