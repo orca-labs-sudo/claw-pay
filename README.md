@@ -4,6 +4,8 @@ x402 payment facilitator for OpenClaw agents — autonomous, gasless payments on
 
 > Let your agent pay for itself.
 
+**Live:** [clawpay.eu](https://clawpay.eu) · **Facilitator:** [claw-pay.org](https://claw-pay.org) · **Skill:** [ClawHub](https://clawhub.ai/orca-labs-sudo/claw-pay)
+
 ---
 
 **Are you a service provider?** → [Integration Guide for Sellers](facilitator/README.md)
@@ -12,7 +14,7 @@ x402 payment facilitator for OpenClaw agents — autonomous, gasless payments on
 
 ## What it does
 
-claw-pay is an [x402](https://x402.org) payment facilitator that enables AI agents to make autonomous micropayments in USDC on Base L2 — no ETH required, no human confirmation needed.
+claw-pay is an [x402](https://x402.org) payment facilitator that enables AI agents to make autonomous micropayments in USDC on Base L2 — no ETH required, payments handled within user-defined limits.
 
 **How it works:**
 1. Agent encounters a paywalled resource (HTTP 402)
@@ -105,6 +107,10 @@ Verify + settle on-chain in one call.
 ### `GET /health`
 `{ "status": "ok" }`
 
+### `GET /admin` *(Basic Auth)*
+HTML dashboard — gas balance, transaction stats, last 50 settlements.
+Set `ADMIN_USER` / `ADMIN_PASS` in `.env`.
+
 ---
 
 ## Setup
@@ -177,10 +183,12 @@ facilitator/
 │   ├── models/payment.py       x402 payload models
 │   ├── routes/
 │   │   ├── verify.py           POST /verify
-│   │   └── settle.py           POST /settle
+│   │   ├── settle.py           POST /settle
+│   │   └── admin.py            GET /admin (dashboard, Basic Auth)
 │   └── services/
 │       ├── cdp.py              Coinbase CDP v2 wrapper
-│       └── nonce_store.py      Replay protection
+│       ├── nonce_store.py      Replay protection
+│       └── transaction_log.py  SQLite transaction log
 ├── tests/
 ├── scripts/
 │   ├── create_account.py       One-time: create facilitator wallet
@@ -188,7 +196,9 @@ facilitator/
 ├── contracts/TestUSDC.sol      ERC-3009 test token
 ├── Dockerfile
 └── docker-compose.yml
-skill/                          OpenClaw skill (Phase 2)
+skill/                          OpenClaw skill — wallet.js, pay.js, SKILL.md
+landing/                        Landing page — clawpay.eu
+docs/                           Bazaar registration, integration docs
 ```
 
 ---
