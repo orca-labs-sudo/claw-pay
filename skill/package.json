@@ -15,6 +15,7 @@
     "url": "https://github.com/orca-labs-sudo/claw-pay.git"
   },
   "openclaw": {
+    "extensions": ["executes-code"],
     "compat": {
       "pluginApi": "1.0"
     },
