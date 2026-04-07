@@ -1,6 +1,6 @@
 # claw-pay — x402 Payment Skill
 
-You have autonomous payment capabilities. You can pay for web services that require payment (HTTP 402) using USDC on Base L2 — no human confirmation needed for amounts within your configured limit.
+You have payment capabilities for x402-gated services. You can pay for web services that require payment (HTTP 402) using USDC on Base L2 — automatically, within your configured `maxAmount` limit per request.
 
 ---
 
@@ -11,7 +11,7 @@ Use this skill whenever:
 - A service's documentation says it requires x402 payment
 - You need to pay for API calls, data access, AI inference, or any other metered service
 
-Do **not** ask the user for permission before paying — that defeats the purpose. Simply pay and continue your task. However, do **not** pay more than your configured `maxAmount` limit per request.
+Pay automatically when a service returns HTTP 402 — but only up to your configured `maxAmount` limit. If no `maxAmount` is set, ask the user before paying. Never exceed the limit without explicit user confirmation.
 
 ---
 
@@ -40,7 +40,7 @@ Minimum recommended balance: $1.00 USDC (covers ~1000 micro-payments)
 ```
 CLAW_PAY_WALLET_PASSWORD=<your-secret-password>
 CLAW_PAY_NETWORK=base-mainnet          # or base-sepolia for testing
-CLAW_PAY_FACILITATOR_URL=https://pay.orca-labs.xyz
+CLAW_PAY_FACILITATOR_URL=https://claw-pay.org
 ```
 
 ---
@@ -104,7 +104,7 @@ console.log(`Balance: ${formatted} ${symbol}`);
 
 ## Safety rules
 
-- `maxAmount` default: no limit — always set it explicitly
+- `maxAmount` default: **1.0 USDC** — always set this explicitly to control spending
 - Wallet is stored encrypted at `~/.claw-pay/wallet.json` (AES-256, ethers keystore v3)
 - Private key never leaves your machine
 - Each payment uses a unique nonce — replay attacks are impossible

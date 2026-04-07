@@ -32,7 +32,7 @@ const NETWORKS = {
   },
 };
 
-const FACILITATOR_URL = process.env.CLAW_PAY_FACILITATOR_URL ?? 'https://pay.orca-labs.xyz';
+const FACILITATOR_URL = process.env.CLAW_PAY_FACILITATOR_URL ?? 'https://claw-pay.org';
 const DEFAULT_NETWORK = process.env.CLAW_PAY_NETWORK ?? 'base-mainnet';
 const PAYMENT_EXPIRY_SECONDS = 300; // 5 minutes
 
@@ -64,8 +64,8 @@ async function payAndFetch(url, options = {}, payOptions = {}) {
     throw new Error('Server returned 402 but no valid x402 payment requirements found');
   }
 
-  // Safety check: refuse to pay more than maxAmount
-  const maxAmount = payOptions.maxAmount ?? Infinity;
+  // Safety check: refuse to pay more than maxAmount (default: 1.0 USDC)
+  const maxAmount = payOptions.maxAmount ?? 1.0;
   const requiredUsd = Number(paymentRequired.maxAmountRequired) / 1_000_000;
   if (requiredUsd > maxAmount) {
     throw new Error(
