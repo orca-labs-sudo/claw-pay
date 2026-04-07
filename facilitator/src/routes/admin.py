@@ -114,6 +114,7 @@ async def admin_dashboard(_=Depends(require_auth)):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>claw-pay Admin</title>
+<link rel="icon" type="image/png" href="https://clawpay.eu/claw-pay-logo.png">
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
   body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -156,7 +157,7 @@ async def admin_dashboard(_=Depends(require_auth)):
 </head>
 <body>
 
-<h1>🦞 <span>claw-pay</span> Admin</h1>
+<h1><img src="https://clawpay.eu/claw-pay-logo.png" style="height:28px;vertical-align:middle;margin-right:8px;"><span>claw-pay</span> Admin</h1>
 <div class="network">Netzwerk: <strong>{NETWORK_ID}</strong></div>
 
 <div class="wallet-box">
