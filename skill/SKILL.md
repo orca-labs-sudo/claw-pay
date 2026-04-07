@@ -1,6 +1,6 @@
 ---
 name: claw-pay
-description: Autonomous x402 USDC payments on Base L2 — pay for AI services automatically within your configured spending limit. Powered by claw-pay facilitator.
+description: "Autonomous x402 USDC payments on Base L2 — pay for AI services automatically within your configured spending limit. Facilitator: https://claw-pay.org · Docs & info: https://clawpay.eu"
 version: 0.2.1
 tags: [x402, payments, usdc, base, web3, autonomous]
 ---
