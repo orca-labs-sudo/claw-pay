@@ -328,6 +328,7 @@
     <a href="#how">How it works</a>
     <a href="#trust">Security</a>
     <a href="#pricing">Pricing</a>
+    <a href="#demo">Live Demo</a>
     <a href="#faq">FAQ</a>
     <a href="https://clawhub.ai" class="btn-nav">Install Skill →</a>
   </div>
@@ -632,6 +633,31 @@ app.use(x402Express({
 </section>
 
 <!-- CTA -->
+<section id="demo" style="padding: 80px 48px; max-width:860px; margin:0 auto;">
+  <div class="section-label">Live demo</div>
+  <h2 style="font-size:clamp(24px,4vw,38px);font-weight:800;color:#fff;margin-bottom:16px;">Try a real x402 payment now</h2>
+  <p style="color:var(--muted);font-size:17px;margin-bottom:36px;">
+    This endpoint costs <strong style="color:#fff;">$0.01 USDC</strong> per request — paid automatically by your agent.<br>
+    No account, no API key, no checkout. Just pay and get a joke.
+  </p>
+  <div style="background:#0d0d1a;border:1px solid #1e2a45;border-radius:12px;padding:28px 32px;margin-bottom:28px;">
+    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:14px;">Endpoint</div>
+    <code style="font-size:15px;color:#e2e8f0;word-break:break-all;">GET https://claw-pay.org/demo/joke</code>
+  </div>
+  <div style="background:#0d0d1a;border:1px solid #1e2a45;border-radius:12px;padding:28px 32px;margin-bottom:28px;">
+    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:14px;">Try without payment (returns 402)</div>
+    <code style="font-size:13px;color:#94a3b8;">curl https://claw-pay.org/demo/joke</code>
+  </div>
+  <div style="background:#0d0d1a;border:1px solid #1e2a45;border-radius:12px;padding:28px 32px;margin-bottom:36px;">
+    <div style="font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:14px;">With claw-pay (agent pays automatically)</div>
+    <code style="font-size:13px;color:#94a3b8;white-space:pre-wrap;">const { payAndFetch, loadWallet } = require('claw-pay');
+const wallet = await loadWallet(process.env.CLAW_PAY_WALLET_PASSWORD);
+const res = await payAndFetch('https://claw-pay.org/demo/joke', {}, { wallet });
+console.log(await res.json()); // { joke: "...", paid: "$0.0100 USDC", txHash: "0x..." }</code>
+  </div>
+  <a href="https://claw-pay.org/demo/joke" target="_blank" class="btn-primary" style="text-decoration:none;">Open endpoint →</a>
+</section>
+
 <div class="cta-section">
   <div class="section-label">Get started</div>
   <h2>Ready to let your<br>agent pay for itself?</h2>
