@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/claw-pay-logo.png">
+<title>claw-pay for WooCommerce — Accept AI Agent Payments</title>
+<style>
+  :root { --bg:#080810; --card:#0d0d1a; --border:#1e2a45; --text:#e2e8f0; --muted:#94a3b8; --accent:#4f8ef7; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; line-height:1.7; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:20px 48px; border-bottom:1px solid var(--border); }
+  .logo { font-size:18px; font-weight:800; color:#fff; }
+  .logo span { color:var(--accent); }
+  .hero { max-width:800px; margin:0 auto; padding:80px 48px 60px; text-align:center; }
+  .badge { display:inline-block; background:#1a2a1a; color:#4ade80; font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:6px 14px; border-radius:20px; border:1px solid #2a4a2a; margin-bottom:24px; }
+  h1 { font-size:clamp(28px,5vw,52px); font-weight:900; color:#fff; line-height:1.1; margin-bottom:20px; }
+  .subtitle { font-size:18px; color:var(--muted); margin-bottom:40px; }
+  .btn { display:inline-block; background:var(--accent); color:#fff; padding:14px 28px; border-radius:8px; font-weight:700; font-size:15px; text-decoration:none; }
+  .btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); margin-left:12px; }
+  section { max-width:860px; margin:0 auto; padding:60px 48px; }
+  h2 { font-size:28px; font-weight:800; color:#fff; margin-bottom:32px; }
+  .steps { display:flex; flex-direction:column; gap:20px; }
+  .step { display:flex; gap:20px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; }
+  .step-num { background:var(--accent); color:#fff; font-weight:800; font-size:16px; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step h3 { color:#fff; font-size:16px; margin-bottom:6px; }
+  .step p { color:var(--muted); font-size:14px; }
+  .fee-box { background:var(--card); border:1px solid #2a4a2a; border-radius:12px; padding:32px; text-align:center; margin-bottom:32px; }
+  .fee-big { font-size:64px; font-weight:900; color:#4ade80; }
+  .fee-sub { color:var(--muted); font-size:15px; margin-top:8px; }
+  code { background:#1a1a2e; padding:2px 8px; border-radius:4px; font-size:13px; color:#94a3b8; }
+  .code-block { background:#0d0d1a; border:1px solid var(--border); border-radius:12px; padding:24px; font-family:monospace; font-size:13px; color:#94a3b8; overflow-x:auto; white-space:pre; }
+  .label { font-size:11px; text-transform:uppercase; letter-spacing:2px; color:var(--accent); margin-bottom:12px; }
+  footer { text-align:center; padding:40px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; }
+  @media(max-width:600px) { nav,section,.hero { padding:20px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo"><img src="/claw-pay-logo.png" alt="" style="height:24px;vertical-align:middle;margin-right:8px;">claw-<span>pay</span></a>
+  <a href="https://github.com/orca-labs-sudo/claw-pay/tree/master/woocommerce-plugin" style="font-size:14px;color:var(--muted);">GitHub →</a>
+</nav>
+
+<div class="hero">
+  <div class="badge">WooCommerce Plugin</div>
+  <h1>Let AI agents shop<br>in your WooCommerce store</h1>
+  <p class="subtitle">OpenClaw agents pay automatically with USDC on Base L2.<br>You earn. You pay nothing until you do.</p>
+  <a href="https://github.com/orca-labs-sudo/claw-pay/raw/master/woocommerce-plugin/claw-pay-gateway/claw-pay-gateway.php" class="btn">Download Plugin</a>
+  <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" class="btn btn-outline">Get Buyer Skill →</a>
+</div>
+
+<section>
+  <div class="fee-box">
+    <div class="fee-big">3%</div>
+    <div class="fee-sub">Commission per transaction — only when you earn.<br>Zero upfront. Zero monthly fee. Zero risk.</div>
+  </div>
+
+  <h2>Setup in 5 minutes</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Download & install</h3>
+        <p>Upload <code>claw-pay-gateway.php</code> to <code>/wp-content/plugins/claw-pay-gateway/</code> and activate.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Enter your wallet address</h3>
+        <p>WooCommerce → Settings → Payments → claw-pay. Paste your Base L2 wallet. That's where 97% of every payment lands.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>Done — agents can pay</h3>
+        <p>OpenClaw agents with the claw-pay skill installed will find and pay your products automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <div class="label">Agent buys product — full flow</div>
+  <div class="code-block">Agent:  GET /wc-api/claw_pay?order_id=42
+Shop:   HTTP 402 — payment required ($12.99 USDC)
+Agent:  signs USDC transfer via claw-pay skill
+Agent:  GET /wc-api/claw_pay?order_id=42 + X-PAYMENT header
+Shop:   settles via claw-pay.org facilitator
+Shop:   HTTP 200 — order complete, USDC in your wallet</div>
+</section>
+
+<section style="text-align:center; padding-top:0;">
+  <h2>Need buyers?</h2>
+  <p style="color:var(--muted);margin-bottom:32px;font-size:16px;">The <a href="https://clawhub.ai/orca-labs-sudo/claw-pay">claw-pay skill on ClawHub</a> gives any OpenClaw agent<br>the ability to pay x402 endpoints — including your shop.</p>
+  <a href="https://clawhub.ai/orca-labs-sudo/claw-pay" class="btn">View Buyer Skill on ClawHub →</a>
+</section>
+
+<footer>
+  © 2026 orca-labs · <a href="/">clawpay.eu</a> · <a href="/impressum.html">Impressum</a> · BSL-1.1
+</footer>
+
+</body>
+</html>

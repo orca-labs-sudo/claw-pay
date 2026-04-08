@@ -1,7 +1,7 @@
 ---
 name: claw-pay
-description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. Facilitator: https://claw-pay.org · Info: https://clawpay.eu"
-version: 0.2.6
+description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. WooCommerce sellers: https://clawpay.eu/woocommerce · Facilitator: https://claw-pay.org"
+version: 0.2.7
 tags: [x402, payments, usdc, base, web3, autonomous, woocommerce, shopping]
 ---
 
