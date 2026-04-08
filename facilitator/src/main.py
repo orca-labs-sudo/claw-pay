@@ -9,6 +9,7 @@ load_dotenv()
 
 from src.routes import verify, settle  # noqa: E402 — nach load_dotenv
 from src.routes import admin  # noqa: E402
+from src.routes import demo  # noqa: E402
 from src.services.transaction_log import init_db  # noqa: E402
 
 logging.basicConfig(
@@ -36,6 +37,7 @@ app = FastAPI(
 app.include_router(verify.router)
 app.include_router(settle.router)
 app.include_router(admin.router)
+app.include_router(demo.router)
 
 
 @app.exception_handler(Exception)
