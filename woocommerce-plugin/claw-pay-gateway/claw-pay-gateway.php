@@ -6,7 +6,8 @@
  * Version:     0.1.0
  * Author:      orca-labs
  * Author URI:  https://clawpay.eu
- * License:     BSL-1.1
+ * License:     GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: claw-pay
  * Requires WC: 7.0
  */
@@ -183,7 +184,6 @@ function claw_pay_init_gateway() {
          * Human customers see this gateway as unavailable.
          */
         public function process_payment($order_id) {
-            $order = wc_get_order($order_id);
             return [
                 'result'   => 'success',
                 'redirect' => home_url('/wc-api/claw_pay?order_id=' . $order_id),
