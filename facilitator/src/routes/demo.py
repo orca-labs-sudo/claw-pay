@@ -74,7 +74,7 @@ async def demo_joke(request: Request):
 
     # No payment → return 402
     if not payment_header:
-        resource_url = str(request.url)
+        resource_url = str(request.url).replace("http://", "https://", 1)
         payload = _build_payment_required(resource_url)
         encoded = base64.b64encode(json.dumps(payload).encode()).decode()
         return JSONResponse(
@@ -96,7 +96,7 @@ async def demo_joke(request: Request):
             "scheme": "exact",
             "network": NETWORK,
             "maxAmountRequired": hex(PRICE_USDC),
-            "resource": str(request.url),
+            "resource": str(request.url).replace("http://", "https://", 1),
             "description": "One premium AI joke",
             "mimeType": "application/json",
             "payTo": FACILITATOR_ADDRESS,
