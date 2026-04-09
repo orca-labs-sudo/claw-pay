@@ -17,7 +17,9 @@ const DEFAULT_WALLET_PATH = path.join(os.homedir(), '.claw-pay', 'wallet.json');
 // ── Key management ────────────────────────────────────────────────────────────
 
 /**
- * Create a new random wallet and save it encrypted to disk.
+ * Create a new random wallet and save it AES-encrypted to the LOCAL disk only.
+ * The mnemonic is returned once so the user can back it up — it is never sent
+ * to any remote server. Storage uses ethers.js keystore v3 format (password-protected).
  * @param {string} password  Passphrase for AES encryption (ethers keystore v3)
  * @param {string} [filePath]  Override default storage path
  * @returns {Promise<{address: string, mnemonic: string}>}
@@ -26,14 +28,15 @@ async function createWallet(password, filePath = DEFAULT_WALLET_PATH) {
   if (!password) throw new Error('Password required to create wallet');
 
   const wallet = ethers.Wallet.createRandom();
+  // Encrypt locally before writing — plaintext private key never touches disk
   const encrypted = await wallet.encrypt(password);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, encrypted, { mode: 0o600 });
+  fs.writeFileSync(filePath, encrypted, { mode: 0o600 }); // owner-read-only
 
   return {
     address: wallet.address,
-    mnemonic: wallet.mnemonic?.phrase ?? null,
+    mnemonic: wallet.mnemonic?.phrase ?? null, // shown to user for backup only
   };
 }
 

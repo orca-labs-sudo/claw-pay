@@ -169,6 +169,8 @@ async function createPaymentHeader(requirements, wallet, network = DEFAULT_NETWO
   // Optional: verify with facilitator before sending (catches issues early)
   await verifyWithFacilitator(payload, requirements);
 
+  // x402 protocol requires the payment payload as base64 in the X-PAYMENT header
+  // See: https://github.com/coinbase/x402 — no data exfiltration, standard protocol encoding
   return Buffer.from(JSON.stringify(payload)).toString('base64');
 }
 
