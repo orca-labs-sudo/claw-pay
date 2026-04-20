@@ -32,7 +32,13 @@ const NETWORKS = {
   },
 };
 
-const FACILITATOR_URL = process.env.CLAW_PAY_FACILITATOR_URL ?? 'https://claw-pay.org';
+// FACILITATOR_URL receives the x402 /verify call (payment validation only — no funds held).
+// Must be HTTPS. Set CLAW_PAY_FACILITATOR_URL to self-host; default is the official facilitator.
+const FACILITATOR_URL = (() => {
+  const url = process.env.CLAW_PAY_FACILITATOR_URL ?? 'https://claw-pay.org';
+  if (!url.startsWith('https://')) throw new Error(`CLAW_PAY_FACILITATOR_URL must use HTTPS (got: ${url})`);
+  return url;
+})();
 const DEFAULT_NETWORK = process.env.CLAW_PAY_NETWORK ?? 'base-mainnet';
 const PAYMENT_EXPIRY_SECONDS = 300; // 5 minutes
 

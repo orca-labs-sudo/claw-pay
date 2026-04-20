@@ -2,7 +2,7 @@
 Contributors: orca-labs-sudo
 Tags: woocommerce, payment, usdc, crypto, ai, x402, base, stablecoin
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 8.0
 Requires WC: 7.0
 Stable tag: 0.1.0

@@ -1,7 +1,7 @@
 ---
 name: claw-pay
 description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. WooCommerce sellers: https://clawpay.eu/woocommerce · Facilitator: https://claw-pay.org"
-version: 0.2.9
+version: 0.3.0
 tags: [x402, payments, usdc, base, web3, autonomous, woocommerce, shopping]
 ---
 
@@ -116,6 +116,18 @@ console.log(`Balance: ${formatted} ${symbol}`);
 - Private key never leaves your machine
 - Each payment uses a unique nonce — replay attacks are impossible
 - Payments expire after 5 minutes if not settled
+
+---
+
+## Trust model — what goes to the facilitator
+
+The facilitator receives one call per payment: a `POST /verify` with the signed ERC-3009 authorization payload. This is the same data that later goes to the seller's server as the `X-PAYMENT` header — it is the payment itself, not a private key.
+
+**What the facilitator sees:** your wallet address, recipient address, USDC amount, nonce, and ERC-3009 signature.  
+**What the facilitator never sees:** your private key, your mnemonic, your wallet password.  
+**What the facilitator does:** validates the signature is well-formed and the amount matches — nothing else. Settlement happens on-chain by the seller's server, not by the facilitator.
+
+The facilitator URL **must use HTTPS** — an HTTP URL is rejected at startup. You can self-host the facilitator (open-source at github.com/orca-labs-sudo/claw-pay) and point `CLAW_PAY_FACILITATOR_URL` to your own instance.
 
 ---
 

@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: claw-pay Gateway
- * Plugin URI:  https://clawpay.eu
+ * Plugin URI:  https://clawpay.eu/woocommerce
  * Description: Accept x402 USDC payments from OpenClaw AI agents. Your shop earns automatically — you pay 3% only when you earn.
  * Version:     0.1.0
  * Author:      orca-labs
- * Author URI:  https://clawpay.eu
+ * Author URI:  https://github.com/orca-labs-sudo
  * License:     GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: claw-pay
+ * Text Domain: claw-pay-gateway
  * Requires WC: 7.0
  */
 
