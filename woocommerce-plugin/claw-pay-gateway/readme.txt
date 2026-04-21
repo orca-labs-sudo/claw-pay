@@ -1,11 +1,11 @@
 === claw-pay Gateway ===
-Contributors: orca-labs-sudo
+Contributors: orcalabs
 Tags: woocommerce, payment, usdc, crypto, ai, x402, base, stablecoin
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
 Requires WC: 7.0
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,10 +60,14 @@ x402 is an open payment protocol built on HTTP. When a client sends a request wi
 
 == Changelog ==
 
+= 0.1.1 =
+* Renamed main gateway class to use unique `Orcalabs_ClawPay_` prefix (no more `WC_` prefix collision)
+* Updated author/contributor to match WordPress.org account
+
 = 0.1.0 =
 * Initial release
 
 == Upgrade Notice ==
 
-= 0.1.0 =
-Initial release.
+= 0.1.1 =
+Class renamed for better isolation — no functional changes.
