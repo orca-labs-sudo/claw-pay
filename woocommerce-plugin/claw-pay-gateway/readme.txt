@@ -5,7 +5,7 @@ Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
 Requires WC: 7.0
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,11 @@ x402 is an open payment protocol built on HTTP. When a client sends a request wi
 
 == Changelog ==
 
+= 0.1.2 =
+* Bundled gateway icon locally under `assets/claw-pay-logo.png` — no more remote file dependency
+* Hardened payment header handling: `sanitize_text_field()` + `wp_unslash()`, strict base64 format check, whitelisted fields before forwarding to facilitator
+* `$_GET['order_id']` now passes through `wp_unslash()` before `absint()`
+
 = 0.1.1 =
 * Renamed main gateway class to use unique `Orcalabs_ClawPay_` prefix (no more `WC_` prefix collision)
 * Updated author/contributor to match WordPress.org account
@@ -68,6 +73,9 @@ x402 is an open payment protocol built on HTTP. When a client sends a request wi
 * Initial release
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+Security + compliance fixes for WP.org guidelines: local icon asset, sanitized request data.
 
 = 0.1.1 =
 Class renamed for better isolation — no functional changes.

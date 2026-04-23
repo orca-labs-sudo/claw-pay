@@ -3,7 +3,7 @@
  * Plugin Name: claw-pay Gateway
  * Plugin URI:  https://clawpay.eu/woocommerce
  * Description: Accept x402 USDC payments from OpenClaw AI agents. Your shop earns automatically — you pay 3% only when you earn.
- * Version:     0.1.1
+ * Version:     0.1.2
  * Author:      orcalabs
  * Author URI:  https://github.com/orca-labs-sudo
  * License:     GPL-2.0-or-later
@@ -23,7 +23,7 @@ function orcalabs_clawpay_init_gateway() {
 
         public function __construct() {
             $this->id                 = 'claw_pay';
-            $this->icon               = 'https://clawpay.eu/claw-pay-logo.png';
+            $this->icon               = plugins_url('assets/claw-pay-logo.png', __FILE__);
             $this->has_fields         = false;
             $this->method_title       = 'claw-pay (x402 / USDC)';
             $this->method_description = 'Accept payments from OpenClaw AI agents via x402 protocol. USDC on Base L2. 3% commission — only when you earn.';
@@ -78,8 +78,12 @@ function orcalabs_clawpay_init_gateway() {
          * Called via: /wc-api/claw_pay?order_id=123
          */
         public function handle_x402_request() {
-            $order_id      = absint($_GET['order_id'] ?? 0);
-            $payment_header = $_SERVER['HTTP_X_PAYMENT'] ?? $_SERVER['HTTP_PAYMENT_SIGNATURE'] ?? '';
+            $order_id = isset($_GET['order_id']) ? absint(wp_unslash($_GET['order_id'])) : 0;
+
+            $raw_header = isset($_SERVER['HTTP_X_PAYMENT'])
+                ? $_SERVER['HTTP_X_PAYMENT']
+                : (isset($_SERVER['HTTP_PAYMENT_SIGNATURE']) ? $_SERVER['HTTP_PAYMENT_SIGNATURE'] : '');
+            $payment_header = sanitize_text_field(wp_unslash($raw_header));
 
             if (!$order_id) {
                 wp_send_json(['error' => 'Missing order_id'], 400);
@@ -95,10 +99,27 @@ function orcalabs_clawpay_init_gateway() {
                 $this->send_payment_required($order);
             }
 
-            // Has payment header → settle via facilitator
-            $payment_data = json_decode(base64_decode($payment_header), true);
-            if (!$payment_data) {
+            // Strict format check: base64 characters only, bounded length
+            if (!preg_match('/^[A-Za-z0-9+\/=_-]{1,8192}$/', $payment_header)) {
+                wp_send_json(['error' => 'Invalid payment header format'], 400);
+            }
+
+            $decoded = base64_decode($payment_header, true);
+            if ($decoded === false) {
+                wp_send_json(['error' => 'Invalid base64 payload'], 400);
+            }
+
+            $payment_data = json_decode($decoded, true);
+            if (!is_array($payment_data)) {
                 wp_send_json(['error' => 'Invalid payment header'], 400);
+            }
+
+            // Whitelist: only forward expected x402 fields to facilitator
+            $allowed_keys = ['x402Version', 'scheme', 'network', 'payload'];
+            $payment_data = array_intersect_key($payment_data, array_flip($allowed_keys));
+
+            if (empty($payment_data['scheme']) || empty($payment_data['network']) || empty($payment_data['payload'])) {
+                wp_send_json(['error' => 'Incomplete payment data'], 400);
             }
 
             $amount_usdc = (int) round($order->get_total() * 1_000_000); // USD → USDC base units
