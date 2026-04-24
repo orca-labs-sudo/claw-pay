@@ -58,6 +58,11 @@ No. This gateway is only used by AI agents. Human customers continue using your 
 = What is x402? =
 x402 is an open payment protocol built on HTTP. When a client sends a request without payment, the server responds with HTTP 402 (Payment Required). The client then signs a USDC transfer and retries automatically.
 
+== Screenshots ==
+
+1. claw-pay gateway activated in WooCommerce Payments list
+2. claw-pay settings page — enable toggle, wallet address, facilitator URL
+
 == Changelog ==
 
 = 0.1.2 =
