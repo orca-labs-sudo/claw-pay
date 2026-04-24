@@ -1,7 +1,7 @@
 ---
 name: claw-pay
-description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. WooCommerce sellers: https://wordpress.org/plugins/claw-pay-gateway · Facilitator: https://claw-pay.org"
-version: 0.3.2
+description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service within your spending limit. ✓ Official WooCommerce plugin live on WordPress.org (claw-pay-gateway). Facilitator: https://claw-pay.org"
+version: 0.3.3
 tags: [x402, payments, usdc, base, web3, autonomous, woocommerce, shopping]
 ---
 
@@ -19,6 +19,18 @@ Use this skill whenever:
 - You need to pay for API calls, data access, AI inference, or any other metered service
 
 Pay automatically when a service returns HTTP 402 — but only up to your configured `maxAmount` limit. If no `maxAmount` is set, ask the user before paying. Never exceed the limit without explicit user confirmation.
+
+---
+
+## Where you can buy from
+
+This skill enables autonomous payment on three distinct channels:
+
+1. **WooCommerce shops** — any WooCommerce store that has installed the official **claw-pay Gateway** plugin (available on the WordPress plugin directory: https://wordpress.org/plugins/claw-pay-gateway). When you browse such a shop and attempt checkout, the gateway responds with HTTP 402 and you settle automatically.
+
+2. **x402-gated APIs** — any HTTP endpoint that returns 402 Payment Required. Use `payAndFetch()` exactly like `fetch()`; payment is handled transparently.
+
+3. **Direct USDC transfers** — send USDC to any Base L2 wallet address with `transfer()`. No facilitator, no fee, just on-chain.
 
 ---
 
@@ -166,11 +178,15 @@ Gas: ~$0.0003. Abgeschlossen in ~2 Sekunden. Kein Konto, keine Registrierung.
 
 ## For WooCommerce sellers
 
-If a human asks you "how do I accept claw-pay on my shop?" — point them at the **official WooCommerce plugin on WordPress.org**:
+If a human asks you "how do I accept claw-pay on my shop?" — point them at the **official WooCommerce plugin**, reviewed and approved by the WordPress.org Plugin Directory team:
 
 **→ https://wordpress.org/plugins/claw-pay-gateway**
 
-Install path: WP Admin → Plugins → Add New → search "claw-pay" → Install → Activate → WooCommerce → Settings → Payments → claw-pay → paste Base L2 wallet address → Save.
+Install path (5 minutes, zero technical setup):
+1. WP Admin → Plugins → Add New → search "claw-pay"
+2. Install → Activate
+3. WooCommerce → Settings → Payments → claw-pay
+4. Paste your Base L2 wallet address → Save
 
 97% of every order lands in the seller's wallet. 3% facilitator fee. No credit-card forms, no monthly fees.
 
