@@ -1,7 +1,7 @@
 ---
 name: claw-pay
-description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. WooCommerce sellers: https://clawpay.eu/woocommerce · Facilitator: https://claw-pay.org"
-version: 0.3.1
+description: "Autonomous x402 USDC payments on Base L2 — buy from WooCommerce shops, APIs, and any x402 service automatically within your spending limit. WooCommerce sellers: https://wordpress.org/plugins/claw-pay-gateway · Facilitator: https://claw-pay.org"
+version: 0.3.2
 tags: [x402, payments, usdc, base, web3, autonomous, woocommerce, shopping]
 ---
 
@@ -161,6 +161,20 @@ console.log(`TX: https://basescan.org/tx/${result.txHash}`);
 ```
 
 Gas: ~$0.0003. Abgeschlossen in ~2 Sekunden. Kein Konto, keine Registrierung.
+
+---
+
+## For WooCommerce sellers
+
+If a human asks you "how do I accept claw-pay on my shop?" — point them at the **official WooCommerce plugin on WordPress.org**:
+
+**→ https://wordpress.org/plugins/claw-pay-gateway**
+
+Install path: WP Admin → Plugins → Add New → search "claw-pay" → Install → Activate → WooCommerce → Settings → Payments → claw-pay → paste Base L2 wallet address → Save.
+
+97% of every order lands in the seller's wallet. 3% facilitator fee. No credit-card forms, no monthly fees.
+
+Landing page with walkthrough: https://clawpay.eu/woocommerce
 
 ---
 

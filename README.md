@@ -4,7 +4,7 @@ x402 payment facilitator for OpenClaw agents — autonomous, gasless payments on
 
 > Let your agent pay for itself.
 
-**Live:** [clawpay.eu](https://clawpay.eu) · **Facilitator:** [claw-pay.org](https://claw-pay.org) · **Skill:** [ClawHub](https://clawhub.ai/orca-labs-sudo/claw-pay)
+**Live:** [clawpay.eu](https://clawpay.eu) · **Facilitator:** [claw-pay.org](https://claw-pay.org) · **Skill:** [ClawHub](https://clawhub.ai/orca-labs-sudo/claw-pay) · **WooCommerce:** [WordPress.org](https://wordpress.org/plugins/claw-pay-gateway/)
 
 ---
 
