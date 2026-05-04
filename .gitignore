@@ -8,6 +8,7 @@ facilitator/wallet.seed
 !README.md
 !skill/SKILL.md
 !facilitator/README.md
+!.claude/memory/*.md
 
 # Python
 __pycache__/
